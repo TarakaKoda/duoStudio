@@ -206,3 +206,27 @@ tl3.to('.pg-3 h3', {
 tl3.to('.pg-3 .pg-2-container', {
     borderBottom: '2px solid #fff'
 }, 'pavani')
+
+
+let box = document.querySelectorAll('.box');
+box.forEach((element) => {
+    element.addEventListener('mouseenter', function() {
+        let attribute = element.getAttribute('data-image');
+        gsap.to(cursor, {
+            width: '35vw',
+            height: '22vw',
+            borderRadius: 0,
+            background: `url(${attribute})`,
+            mixBlendMode: 'normal',
+        });
+    })
+    element.addEventListener('mouseleave', function() {
+        gsap.to(cursor, {
+            width: '1.2vw',
+            height: '1.2vw',
+            borderRadius: '50%',
+            background: '#EDBFFF',
+            mixBlendMode: 'difference',
+        });
+    })
+})
