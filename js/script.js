@@ -33,7 +33,7 @@ init();
 
 let cursor = document.querySelector('.cursor');
 let main = document.querySelector('.main');
-main.addEventListener('mousemove', (dets) => {
+document.addEventListener('mousemove', (dets) => {
     const cursorWidth = cursor.offsetWidth;
     const cursorHeight = cursor.offsetHeight;
 
@@ -136,19 +136,19 @@ let tl = gsap.timeline({
     scrollTrigger: {
         trigger: '.heading-container .top',
         scroller: '.main',
-        start: 'top 30%',
+        start: 'top 200vw',
         end: 'top 0',
         scrub: 2
     }
 })
 
 tl.to('.heading-container .top', {
-    x: -100,
+    x: '-5vw',
     duration: 1,
     delay: 0
 }, 'afrin');
 tl.to('.heading-container .bottom', {
-    x: 100,
+    x: '5vw',
     duration: 1,
     delay: 0
 }, 'afrin') ;
@@ -164,69 +164,288 @@ tl.to('.video-wrapper video', {
 }, 'afrin') ;
 
 
-let tl2 = gsap.timeline({
+// let tl2 = gsap.timeline({
+//     scrollTrigger: {
+//         trigger: '.heading-container .top',
+//         scroller: '.main',
+//         start: 'top -1000vw',
+//         end: 'top -730vw',
+//         scrub: true
+//     }
+// })
+
+
+
+// tl2.to('.main', {
+//     backgroundColor: '#fff',
+//     delay:0,
+//     duration: 1
+// }, 'jyo')
+// tl2.to('.pg-2', {
+//     color: '#000',
+//     delay:0,
+//     duration: 1
+// }, 'jyo')
+
+// let tl3 = gsap.timeline({
+//     scrollTrigger: {
+//         trigger: '.heading-container .top',
+//         scroller: '.main',
+//         start: 'top -4400vw',
+//         end: 'top -600vw',
+//         scrub: true
+//     }
+// })
+
+// tl3.to('.main', {
+//     backgroundColor: '#0F0D0D',
+//     color: '#fff'
+// }, 'pavani')
+
+// tl3.to('.pg-3 h3', {
+//     color: '#fff'
+// }, 'pavani')
+// tl3.to('.pg-3 .pg-2-container', {
+//     borderBottom: '2px solid #fff'
+// }, 'pavani')
+
+// Create ScrollTrigger timeline for desktop view
+let tlDesktop = gsap.timeline({
     scrollTrigger: {
         trigger: '.heading-container .top',
         scroller: '.main',
-        start: 'top -90%',
-        end: 'top -130%',
+        start: 'top -1000vw',
+        end: 'top -730vw',
         scrub: true
     }
-})
+});
 
-tl2.to('.main', {
+// Animation for desktop view
+tlDesktop.to('.main', {
     backgroundColor: '#fff',
-    delay:0,
+    delay: 0,
     duration: 1
-}, 'jyo')
-tl2.to('.pg-2', {
-    color: '#000',
-    delay:0,
-    duration: 1
-}, 'jyo')
+}, 'jyo');
 
-let tl3 = gsap.timeline({
+tlDesktop.to('.pg-2', {
+    color: '#000',
+    delay: 0,
+    duration: 1
+}, 'jyo');
+
+// Create ScrollTrigger timeline for mobile view
+let tlMobile = gsap.timeline({
     scrollTrigger: {
         trigger: '.heading-container .top',
         scroller: '.main',
-        start: 'top -580%',
-        end: 'top -600%',
+        start: 'top -50vw',   // Adjust the start value for mobile view
+        end: 'top -200vw',    // Adjust the end value for mobile view
         scrub: true
     }
-})
+});
 
-tl3.to('.main', {
+// Animation for mobile view
+tlMobile.to('.main', {
+    backgroundColor: '#fff',
+    delay: 0,
+    duration: 1
+}, 'jyo');
+
+tlMobile.to('.pg-2', {
+    color: '#000',
+    delay: 0,
+    duration: 1
+}, 'jyo');
+
+// Use media queries to switch between configurations
+const desktopMediaQuery = window.matchMedia("(min-width: 768px)");
+
+function handleViewportChange(mediaQuery) {
+    if (mediaQuery.matches) {
+        // Desktop view
+        tlDesktop.scrollTrigger.enable();
+        tlMobile.scrollTrigger.disable();
+    } else {
+        // Mobile view
+        tlDesktop.scrollTrigger.disable();
+        tlMobile.scrollTrigger.enable();
+    }
+}
+
+// Initial check and event listener for viewport changes
+handleViewportChange(desktopMediaQuery);
+desktopMediaQuery.addListener(handleViewportChange);
+
+
+// Create ScrollTrigger timeline for desktop view
+let tl3Desktop = gsap.timeline({
+    scrollTrigger: {
+        trigger: '.heading-container .top',
+        scroller: '.main',
+        start: 'top -4400vw',
+        end: 'top -600vw',
+        scrub: true
+    }
+});
+
+// Animation for desktop view
+tl3Desktop.to('.main', {
     backgroundColor: '#0F0D0D',
     color: '#fff'
-}, 'pavani')
+}, 'pavani');
 
-tl3.to('.pg-3 h3', {
+tl3Desktop.to('.pg-3 h3', {
     color: '#fff'
-}, 'pavani')
-tl3.to('.pg-3 .pg-2-container', {
+}, 'pavani');
+
+tl3Desktop.to('.pg-3 .pg-2-container', {
     borderBottom: '2px solid #fff'
-}, 'pavani')
+}, 'pavani');
+
+// Create ScrollTrigger timeline for mobile view
+let tl3Mobile = gsap.timeline({
+    scrollTrigger: {
+        trigger: '.heading-container .top',
+        scroller: '.main',
+        start: 'top -900vw',  // Adjust the start value for mobile view
+        end: 'top -100vw',    // Adjust the end value for mobile view
+        scrub: true
+    }
+});
+
+// Animation for mobile view
+tl3Mobile.to('.main', {
+    backgroundColor: '#0F0D0D',  // Modify for mobile
+    color: '#fff'           // Modify for mobile
+}, 'pavani');
+
+tl3Mobile.to('.pg-2 p', {
+    backgroundColor: '#0F0D0D',  // Modify for mobile
+    color: '#fff'           // Modify for mobile
+}, 'pavani');
+
+tl3Mobile.to('.pg-3 h3', {
+    color: '#fff'  // Modify for mobile
+}, 'pavani');
+
+tl3Mobile.to('.pg-3 .pg-2-container', {
+    borderBottom: '2px solid #000'  // Modify for mobile
+}, 'pavani');
+
+// Use media queries to switch between configurations
+const desktopMediaQuery2 = window.matchMedia("(min-width: 768px)");
+
+function handleViewportChange2(mediaQuery) {
+    if (mediaQuery.matches) {
+        // Desktop view
+        tl3Desktop.scrollTrigger.enable();
+        tl3Mobile.scrollTrigger.disable();
+    } else {
+        // Mobile view
+        tl3Desktop.scrollTrigger.disable();
+        tl3Mobile.scrollTrigger.enable();
+    }
+}
+
+// Initial check and event listener for viewport changes
+handleViewportChange2(desktopMediaQuery2);
+desktopMediaQuery2.addListener(handleViewportChange2);
 
 
-let box = document.querySelectorAll('.box');
-box.forEach((element) => {
-    element.addEventListener('mouseenter', function() {
-        let attribute = element.getAttribute('data-image');
-        gsap.to(cursor, {
-            width: '35vw',
-            height: '22vw',
-            borderRadius: 0,
-            background: `url(${attribute})`,
-            mixBlendMode: 'normal',
-        });
+
+
+function mentionBox() {
+    let box = document.querySelectorAll('.box');
+    box.forEach((element) => {
+        element.addEventListener('mouseenter', function() {
+            let attribute = element.getAttribute('data-image');
+            gsap.to(cursor, {
+                width: '35vw',
+                height: '22vw',
+                borderRadius: 0,
+                background: `url(${attribute})`,
+                mixBlendMode: 'normal',
+            });
+        })
+        element.addEventListener('mouseleave', function() {
+            gsap.to(cursor, {
+                width: '1.2vw',
+                height: '1.2vw',
+                borderRadius: '50%',
+                background: '#EDBFFF',
+                mixBlendMode: 'difference',
+            });
+        })
     })
-    element.addEventListener('mouseleave', function() {
+
+}
+mentionBox();
+
+function clientTop(element) {
+    let elementVariable = document.querySelector(element);
+    elementVariable.addEventListener('mouseenter', function() {
+        gsap.to(cursor, {
+            width: '3vw',
+            height: '3vw'
+        })
+    })
+    elementVariable.addEventListener('mouseleave', function() {
+        gsap.to(cursor, {
+            width: '1.2vw',
+            height: '1.2vw'
+        })
+    })
+}
+function navTop(element) {
+    let elementVariable = document.querySelector(element);
+    elementVariable.addEventListener('mouseenter', function() {
+        gsap.to(cursor, {
+            width: '3vw',
+            background:'#000',
+            height: '3vw',
+            mixBlendMode: 'normal'
+        })
+    })
+    elementVariable.addEventListener('mouseleave', function() {
         gsap.to(cursor, {
             width: '1.2vw',
             height: '1.2vw',
-            borderRadius: '50%',
             background: '#EDBFFF',
-            mixBlendMode: 'difference',
-        });
+            mixBlendMode: 'difference'
+        })
     })
-})
+}
+
+clientTop('.client-top');
+clientTop('.element-container.strategy');
+clientTop('.element-container.identity');
+clientTop('.element-container.experience');
+navTop('.nav-2');
+navTop('.nav-3');
+navTop('.nav-4');
+
+function hoverPage(innerHtml) {
+    let pElements = document.querySelectorAll('.hover-page p');
+    pElements.forEach(function(elem) {
+        elem.innerHTML = innerHtml
+    })
+}
+
+function magicPage(element, innerHtml) {
+    let work = document.querySelector(element);
+    work.addEventListener('mouseenter', function() {
+        hoverPage(innerHtml);
+        gsap.to('.hover-page', {
+            zIndex: 2
+        })
+    })
+    work.addEventListener('mouseleave', function() {
+        gsap.to('.hover-page', {
+            zIndex: 0
+        })
+    })
+}
+
+magicPage('.nav-2', 'Work');
+magicPage('.nav-3', 'Studio');
+magicPage('.nav-4', 'Contact');

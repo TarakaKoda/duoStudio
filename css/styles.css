@@ -11,7 +11,7 @@
     src: url(../fonts/ppmori/ppmori-regular.woff2);
 }
 @font-face {
-    font-family: 'iconochive';
+    font-family: 'icon';
     src: url(../fonts/iconochive/Iconochive-Regular.woff);
 }
 
@@ -37,7 +37,7 @@ html, body {
     border-radius: 50%;
     position: fixed;
     background: #EDBFFF;
-    z-index: 1;
+    z-index: 99;
     mix-blend-mode: difference;
     transition: all linear 0.1s ease-in-out;
     pointer-events: none;
@@ -46,10 +46,42 @@ html, body {
     padding: .5vw;
     display: flex;
     justify-content: center;
+    object-fit: cover;
     align-items: center;
     text-transform: uppercase;
     font-weight: 600;
 }
+
+.hover-page {
+    width: 100vw;
+    height: 50vw;
+    background: #EDBFFF;
+    opacity: 0.99;
+    position: fixed;
+    font-weight: 300;
+    z-index: 0;
+    font-family: 'ppmori';
+    font-size: 9vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(100%) }
+    100% { transform: translateX(calc(-100% - 11vw)) }
+}
+
+/* Apply the animation to the <p> elements within the container */
+.hover-page p {
+    display: inline-block; /* Display <p> elements in a row */
+    animation: scroll 5s linear infinite; /* Adjust the animation duration as needed */
+}
+
+
+
+
 
 .main {
     background: #0F0D0D;
@@ -57,22 +89,24 @@ html, body {
 }
 
 .pg-1 {
-    min-height: 100vh;
+    min-height: 90vw;
     width: 100vw;
 }
 
-.pg-1 nav {
+nav {
     width: 100vw;
     height: 3.6vw;
     display: flex;
     justify-content: center;
+    position: fixed;
     align-items: center;
+    z-index: 99;
+    mix-blend-mode: difference;
 }
 
-.pg-1 .nav-container {
+.nav-container {
     width: 96vw;
     height: 2.6vw;
-    background-color: #0F0D0D;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -182,14 +216,19 @@ html, body {
 /* Page 2
    ========================================================================== */
 .pg-2 {
-    min-height: 130vh;
+    min-height: 70vw;
     width: 100vw;
+    color: #fff;
+}
+
+.pg-2 *::selection , .pg-3 *::selection{
+    background: #0F0D0D;
     color: #fff;
 }
 
 .pg-2-container {
     width: 100vw;
-    min-height: 130vh;
+    min-height: 70vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -199,7 +238,7 @@ html, body {
 .pg-2-wrapper {
     margin-top: 4.5vw;
     width: 88vw;
-    min-height: 100vh;
+    min-height: 50vw;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -265,7 +304,7 @@ html, body {
 
 .pg-3 {
     width: 100vw;
-    min-height: 150vh;
+    min-height: 150vw;
 }
 
 .pg-3 .pg-2-container {
@@ -429,6 +468,10 @@ html, body {
     align-items: flex-end;
 }
 
+.all-project p {
+    font-size: 1vw;
+}
+
 .all-projects-container {
     width: 88vw;
     min-height: 26vw;
@@ -470,7 +513,7 @@ html, body {
 
 .pg-4 {
     width: 100vw;
-    height: 150vh;
+    height: 70vw;
     font-family: 'ppmori';
     display: flex;
     justify-content: center;
@@ -580,7 +623,7 @@ html, body {
 .pg-5 {
     width: 100vw;
     font-family: 'ppmori';
-    height: 49vw;
+    height: 50vw;
     border-top: 2px solid #fff;
     margin-top: -10vw;
     display: flex;
@@ -591,6 +634,7 @@ html, body {
 .client-container {
     width: 88vw;
     height: 37vw;
+    margin-bottom: 2vw;
 }
 
 .client-title-container {
@@ -662,9 +706,75 @@ html, body {
 }
 
 /* footer
-   ========================================================================== */
+   ========================================================================= */
 footer {
     width: 100vw;
-    height: 50vw;
+    min-height: 60vw;
     background: #EDBFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    overflow: hidden;
+}
+
+footer *::selection {
+    background: #0F0D0D;
+    color: #EDBFFF;
+}
+
+.footer-container {
+    width: 88vw;
+    height: 42vw;
+    font-family: 'ppmori';
+}
+
+.footer-container .all-project {
+    margin-top: -2vw;
+}
+
+.footer-container h3 {
+    font-size: 8.3vw;
+    color: #000;
+    letter-spacing: -.2vw;
+}
+
+.footer-container .caption {
+    font-size: 1.5vw;
+    margin-top: 4vw;
+}
+
+.footer-container .circle-container{
+    background: #fff;
+    color: #000;
+}
+.contact {
+    margin-top: 5vw;
+    font-family: 'ppmori';
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.social-media {
+    font-size: .9vw;
+    font-weight: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5vw;
+}
+
+.social-media p {
+    font-weight: 300;
+    margin-bottom: .5vw;
+}
+
+.copyright-container {
+    width: 7vw;
+}
+
+.copyright-container p {
+    font-size: .8vw;
+    margin-left: -4vw;
 }
