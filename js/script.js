@@ -449,3 +449,24 @@ function magicPage(element, innerHtml) {
 magicPage('.nav-2', 'Work');
 magicPage('.nav-3', 'Studio');
 magicPage('.nav-4', 'Contact');
+
+
+function loadingVideo(smallELement, largeELement) {
+    // Wait for the page to load
+    window.addEventListener("load", function() {
+        // Hide the small video
+        var smallVideo = document.getElementById(smallELement);
+        smallVideo.style.display = "none";
+        
+        // Show the large video
+        var largeVideo = document.getElementById(largeELement);
+        largeVideo.style.display = "block";
+    
+        // Play the large video
+        largeVideo.play();
+    });
+}
+
+loadingVideo('smallVideo', 'largeVideo');
+loadingVideo('rightVideoSmall', 'rightVideoLarge');
+loadingVideo('leftVideoSmall', 'leftVideoLarge');

@@ -29,6 +29,7 @@
 html, body {
     height: 100%;
     width: 100%;
+    font-family: 'ppmori' system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .cursor {
@@ -213,6 +214,18 @@ nav {
     width: 60%;
 }
 
+#largeVideo {
+    display: none;
+}
+
+#rightVideoLarge {
+    display: none;
+}
+
+#leftVideoLarge {
+    display: none;
+}
+
 /* Page 2
    ========================================================================== */
 .pg-2 {
@@ -374,12 +387,10 @@ nav {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    background: red;
 }
 .pg-3 .middle .video-container {
     width: 40vw;
     height: 28vw;
-    background: red;
 }
 
 
@@ -402,7 +413,6 @@ nav {
 .left-content .video-container {
     width: 40vw;
     height: 40vw;
-    background: red;
     overflow: hidden;
 
 }
