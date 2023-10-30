@@ -72,6 +72,10 @@ function videoCursor(element) {
 videoCursor('.main-video');
 videoCursor('.right-video')
 videoCursor('.left-video');
+videoCursor('#largeVideo');
+videoCursor('#rightVideoLarge');
+videoCursor('#leftVideoLarge');
+
 
 function pictureCursor(element) {
     let picture = document.querySelector(element);
